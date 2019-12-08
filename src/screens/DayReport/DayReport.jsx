@@ -39,8 +39,8 @@ const DayReport = ({ match }) => {
       <ReportContent>
         <h3>Motivos</h3>
         <p>Temperatura alta na esteira devido a carga de peso elevado:</p>
-        <span>Temperatura atual: {day.machineHealth.belt.temperature}ºC</span>
-        <span>Temperatura máxima: {day.machineHealth.belt.temperatureSupported}ºC</span>
+        <span>Temperatura atual: <br/><b>{day.machineHealth.belt.temperature}ºC</b></span>
+        <span>Temperatura máxima: <br/><b>{day.machineHealth.belt.temperatureSupported}ºC</b></span>
       </ReportContent>
       <ReportContent>
         <h3>Entenda o cálculo</h3>

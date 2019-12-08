@@ -31,6 +31,12 @@ export const ReportTitleDescription = styled.h2`
 
   >p {
     margin: 0;
+    font-size: 28px;
+
+    > span {
+      color: #FF0062;
+      font-weight: bold;
+    }
   }
 `;
 
@@ -43,6 +49,22 @@ export const ReportContent = styled.div`
     color: #ffffff;
     font-weight: bold;
     font-size: 28px;
+    margin-top: 20px;
+  }
+
+  > p {
+    font-size: 20px;
+    line-height: 36px;
+  }
+
+  > span {
+    font-size: 20px;
+    margin-bottom: 20px;
+
+    > b {
+      color: #00FF7B;
+      font-size: 60px;
+    }
   }
 `;
 
@@ -52,4 +74,6 @@ export const CloseReport = styled(Link)`
   top: 8px;
   right: 32px;
   padding: 8px;
+
+ 
 `;
