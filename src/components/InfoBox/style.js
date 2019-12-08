@@ -1,9 +1,11 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const InfoBoxContainer = styled.div`
   position: absolute;
   top: 8px;
   right: 416px;
+  bottom: 0px;
   display: flex;
   flex-direction: column;
   transform: translate3d(${props =>  props.menuOpened ? '0px' : '400px'}, 0, 0);
@@ -33,4 +35,22 @@ export const InfoBoxText = styled.span`
   color: #ffffff;
   font-size: 18px;
   text-align: right;
+`;
+
+export const InfoBoxTextBottom = styled(InfoBoxText)`
+  position: absolute;
+  bottom: 100px;
+`;
+
+export const ReportLink = styled(Link)`
+  color: #ffffff;
+  width: 100%;
+  position: absolute;
+  bottom: 50px;
+  font-weight: bold;
+  text-align: right;
+
+  & span {
+    margin-right: 8px;
+  }
 `;
