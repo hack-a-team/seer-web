@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const MenuContainer = styled.aside`
+  height: 100vh;
+  overflow: scroll;
   background: #0d1626;
   padding: 8px 32px;
   max-width: 400px;

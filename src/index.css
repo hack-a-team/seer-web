@@ -1,6 +1,7 @@
 @import '~antd/dist/antd.css';
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
+
 * {
   box-sizing: border-box;
 }
@@ -101,4 +102,24 @@ body {
   top: 0;
   left: 0;
   background: red;
+}
+
+.ant-fullcalendar-selected-day .ant-fullcalendar-value, .ant-fullcalendar-month-panel-selected-cell .ant-fullcalendar-value {
+  border-radius: 50%;
+}
+
+.ant-fullcalendar-column-header-inner, .ant-fullcalendar-value {
+  font-size: 18px;
+}
+
+.ant-fullcalendar table thead, .ant-fullcalendar th, .ant-fullcalendar td thead {
+  background: rgba(0,0,0,0.1);
+  border-radius: 0px;
+  padding: 12px 0;
+}
+
+.ant-time-picker-input::-webkit-input-placeholder {
+  font-weight: normal;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.4)
 }

@@ -24,13 +24,11 @@ const DayReport = ({ match }) => {
   }, []);
   
   const day = (data || fallback).find(item => item.date === match.params.date) || fallback[0];
-
-  console.log(day);
   
   return (
     <ReportContainer>
       <CloseReport to="/map"><Icon type="close" /></CloseReport>
-      <ReportTitle>{moment(match.params.date).format('D/MM')}</ReportTitle>
+      <ReportTitle>{moment(match.params.date).format('D')} <span>{moment(match.params.date).format('MMM')}</span></ReportTitle>
       <ReportTitleDescription>
         <p>
           A chance de haver uma emergência no Porto nesse dia é de <span>{day.dangerProbability}%</span><br />
@@ -39,7 +37,7 @@ const DayReport = ({ match }) => {
       <ReportContent>
         <h3>Motivos</h3>
         <p>Temperatura alta na esteira devido a carga de peso elevado:</p>
-        <span>Temperatura atual: <br/><b>{day.machineHealth.belt.temperature}ºC</b></span>
+        <span>Temperatura atual: <br/><b className="-red">{day.machineHealth.belt.temperature}ºC</b></span>
         <span>Temperatura máxima: <br/><b>{day.machineHealth.belt.temperatureSupported}ºC</b></span>
       </ReportContent>
       <ReportContent>

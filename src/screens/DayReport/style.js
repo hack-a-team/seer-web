@@ -19,6 +19,14 @@ export const ReportTitle = styled.h1`
   align-items: center;
   justify-content: flex-start;
   margin: 0;
+  display: flex;
+
+  > span {
+    font-size: 30px;
+    margin-top: 25px;
+    font-weight: 400;
+    margin-left: 5px;
+  }
 `;
 
 export const ReportTitleDescription = styled.h2`
@@ -64,6 +72,10 @@ export const ReportContent = styled.div`
     > b {
       color: #00FF7B;
       font-size: 60px;
+
+      &.-red {
+        color: #FF0062;
+      }
     }
   }
 `;
