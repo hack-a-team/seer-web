@@ -4,6 +4,8 @@ export const DateSelectorTitle = styled.span`
   color: #ffffff;
   font-size: 36px;
   font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
 export const TimeRangeLabel = styled.span`

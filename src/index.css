@@ -39,8 +39,16 @@ body {
   border: none;
 }
 
+.ant-select-arrow {
+  color: rgba(255, 255, 255, 0.25);
+}
+
 .ant-fullcalendar-header {
   display: flex;
+}
+
+.ant-fullcalendar-column-header span {
+  font-weight: bold;
 }
 
 .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {

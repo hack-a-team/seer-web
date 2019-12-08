@@ -15,12 +15,13 @@ export const InfoBoxContainer = styled.div`
 export const InfoBoxDate = styled.span`
   color: #ffffff;
   font-weight: bold;
-  font-size: 48px;
+  font-size: 63px;
   text-align: right;
   &>span {
-    margin-left: 8px;
+    margin-left: 3px;
     text-transform: lowercase;
-    font-size: 30px;
+    font-size: 20px;
+    font-weight: 400;
   }
 `;
 
