@@ -10,14 +10,14 @@ const SideMenu = ({ children }) => (
     {
       ({ opened, toggleMenu }) => (
         <MenuContainer opened={opened}>
-          <MenuOpenButton onClick={toggleMenu}>
+          {/* <MenuOpenButton onClick={toggleMenu}>
             {
               opened ? <Icon type="menu-unfold" /> : <Icon type="menu-fold" />
             }
-          </MenuOpenButton>
-          <MenuCloseButton onClick={toggleMenu}>
+          </MenuOpenButton> */}
+          {/* <MenuCloseButton onClick={toggleMenu}>
             <Icon type="close" />
-          </MenuCloseButton>
+          </MenuCloseButton> */}
           <MenuContent>
             {children}
           </MenuContent>

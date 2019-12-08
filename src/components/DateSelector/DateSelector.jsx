@@ -11,14 +11,14 @@ function disabledDate(date) {
   return false;
 }
 
-const DateSelector = () => (
+const DateSelector = ({ setDay }) => (
   <>
     <DateSelectorTitle>Dia</DateSelectorTitle>
-    <Calendar fullscreen={false} disabledDate={disabledDate} />
+    <Calendar fullscreen={false} disabledDate={disabledDate} onChange={setDay} />
     <DateSelectorTitle>Hora</DateSelectorTitle>
     <Row type="flex" align="middle">
       <TimeRangeLabel>De</TimeRangeLabel>
-      <TimePicker />
+      <TimePicker onChange={console.log} />
       <TimeRangeLabel>Até</TimeRangeLabel>
       <TimePicker />
     </Row>

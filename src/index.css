@@ -51,10 +51,47 @@ body {
   font-weight: bold;
 }
 
+*::selection {
+  background: none;
+}
+
 .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
   background: none;
 }
 
 .ant-fullcalendar-calendar-body {
   padding-left: 0;
+}
+
+.ant-time-picker-input {
+  background: none;
+  border: none;
+}
+
+.ant-time-picker-icon .ant-time-picker-clock-icon, .ant-time-picker-clear .ant-time-picker-clock-icon {
+  color: rgba(255, 255, 255, 0.25)
+}
+
+.ant-time-picker-icon, .ant-time-picker-clear {
+  display: none;
+}
+
+.ant-fullcalendar-header .ant-radio-group {
+  display: none;
+}
+
+.ant-select-selection-selected-value {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.ant-time-picker-input {
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.probability {
+  font-size: 30px;
+  color: #00ff7b;
 }

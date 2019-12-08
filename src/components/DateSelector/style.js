@@ -18,5 +18,5 @@ export const TimeRangeLabel = styled.span`
 `;
 
 export const ApplyContainer = styled.div`
-  margin-top: 16px;
+  margin-top: 36px;
 `;

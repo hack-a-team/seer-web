@@ -26,12 +26,12 @@ export const MenuCloseButton = styled.button`
   }
 `;
 
-export const MenuOpenButton = styled(MenuCloseButton)`
-  float: none;
-  position: absolute;
-  bottom: 8px;
-  left: -32px;
-`;
+// export const MenuOpenButton = styled(MenuCloseButton)`
+//   float: none;
+//   position: absolute;
+//   bottom: 8px;
+//   left: -32px;
+// `;
 
 export const MenuContent = styled.div`
   padding-top: 16px;

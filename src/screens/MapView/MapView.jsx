@@ -5,9 +5,11 @@ import { Spin } from 'antd';
 import SideMenu from '../../components/SideMenu/SideMenu';
 import InfoBox from '../../components/InfoBox/InfoBox';
 import DateSelector from '../../components/DateSelector/DateSelector';
-import BlueBoat from '../../components/BlueBoat/BlueBoat';
-import GreenBoat from '../../components/GreenBoat/GreenBoat';
-import RedBoat from '../../components/RedBoat/RedBoat';
+import fallback from '../../fallback'
+
+const shipPink = require('../../ship-pink.svg')
+const shipBlue = require('../../ship-blue.svg')
+const shipGreen = require('../../ship-green.svg')
 
 const mapStyle = [
   {
@@ -324,19 +326,50 @@ const MapHoc = withScriptjs(withGoogleMap(({ children }) => (
 
 function getMarkerIcon(markerData) {
   if (markerData.location !== 'ground') {
-    switch (markerData.type) {
+    switch (markerData.kind) {
       case 'civil':
-        return <BlueBoat />;
+        return shipBlue;
       case 'wet':
-        return <GreenBoat />;
+        return shipPink;
       default:
-        return <RedBoat />;
+        return shipGreen;
     }
   }
 }
 
 const MapView = () => {
-  const [markers, setMarkers] = useState([]);
+  const [day, setDay] = useState({
+    cargos: []
+  })
+  const [markers, setMarkers] = useState([
+    {
+      lat: -23.970332,
+      lng: -46.292417,
+      location: "ship",
+      kind: "wet",
+      angle: -35,
+    },
+    {
+      lat: -23.991490,
+      lng:  -46.320252,
+      location: "ship",
+      kind: "dry",
+      angle: -45,
+    },
+    {
+      lat: -23.991108,
+      lng:  -46.328299,
+      location: "ship",
+      kind: "civil",
+      angle: -5,
+    }
+  ]);
+
+  const selectDay = day => {
+    const translatedDay = day.format('YYYY-MM-DD')
+    const filteredDay = fallback.find(item => item.date === translatedDay) || fallback[0]
+    setDay(filteredDay)
+  }
 
   useEffect(() => {
     fetch('https://94f37516.ngrok.io/cargos')
@@ -347,12 +380,12 @@ const MapView = () => {
         throw new Error('Invalid Response');
       })
       .then(res => {
-        setMarkers(res.map(r => ({
-          lat: r.latitude,
-          lng: r.longitude,
-          location: r.location,
-          type: r.type,
-        })));
+        // setMarkers(res.map(r => ({
+        //   lat: r.latitude,
+        //   lng: r.longitude,
+        //   location: r.location,
+        //   type: r.type,
+        // })));
       })
       .catch(err => {
         console.log(err);
@@ -362,16 +395,17 @@ const MapView = () => {
   return (
     <>
       <MapHoc {...defaultProps}>
-        {markers.map(m => (
-          <Marker
-            icon={getMarkerIcon(m)}
-            position={{ lat: m.lat, lng: m.lng }}
-          />
+        {day.cargos.filter(cargo => cargo.location === 'ship').map((m, key) => (
+            <Marker
+              key={key}
+              icon={getMarkerIcon(m)}
+              position={{ lat: Number(m.lat), lng: Number(m.lng) }}
+            />
         ))}
       </MapHoc>
-      <InfoBox />
-      <SideMenu>
-          <DateSelector />
+      <InfoBox day={day}/>
+      <SideMenu >
+          <DateSelector setDay={selectDay}/>
       </SideMenu>
     </>
   );
