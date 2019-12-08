@@ -14,7 +14,8 @@ const InfoBox = ({ day = {} }) => {
     dangerProbability,
     incidentsToday,
     weather = {},
-    cargos = []
+    cargos = [],
+    sensors  = []
   } = day
   
   return (
@@ -39,10 +40,10 @@ const InfoBox = ({ day = {} }) => {
               Alertas: <strong>{alerts || 0}</strong>
             </InfoBoxText>
             <InfoBoxText>
-              Sensores: <strong>{alerts || 0}</strong>
+              Sensores ativos: <strong>{sensors.filter(sensor => sensor.status === 'active').length || 0}</strong>
             </InfoBoxText>
             <InfoBoxText>
-              Clima: <strong>Chuva</strong>
+              Clima: <strong>{weather.condition === 'storm' ? 'Chuva' : weather.condition === 'rainy' ? 'Chuvoso' : weather.condition === 'sunny' ? 'Ensolarado' : 'Normal'}</strong>
             </InfoBoxText>
             <InfoBoxTextBottom>
               Probabilidade de incidente: <strong className="probability">{dangerProbability || 0}%</strong>
