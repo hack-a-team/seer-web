@@ -72,7 +72,8 @@ const fallBack = [
       incidentsWithAlcohol: 2,
       incidentsWithJuicy: 3,
       incidentsWithCar: 8
-    }
+    },
+    dangerProbability: 0.01,
   }
 ];
 

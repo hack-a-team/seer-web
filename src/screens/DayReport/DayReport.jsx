@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import{ Icon, Spin } from 'antd';
+import{ Icon } from 'antd';
 import moment from 'moment';
 
 import { ReportContainer, ReportTitle, ReportTitleDescription, ReportContent, CloseReport } from './style';
@@ -21,13 +21,11 @@ const DayReport = ({ match }) => {
       .catch(err => {
         console.log(err);
       })
-  });
+  }, []);
   
-  const day = (data || fallback).find(item => item.date === match.params.date);
+  const day = (data || fallback).find(item => item.date === match.params.date) || fallback[0];
 
-  if (!day) {
-    return <Spin />;
-  }
+  console.log(day);
   
   return (
     <ReportContainer>
