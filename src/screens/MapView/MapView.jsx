@@ -341,52 +341,23 @@ const MapView = () => {
   const [day, setDay] = useState({
     cargos: []
   })
-  const [markers, setMarkers] = useState([
-    {
-      lat: -23.970332,
-      lng: -46.292417,
-      location: "ship",
-      kind: "wet",
-      angle: -35,
-    },
-    {
-      lat: -23.991490,
-      lng:  -46.320252,
-      location: "ship",
-      kind: "dry",
-      angle: -45,
-    },
-    {
-      lat: -23.991108,
-      lng:  -46.328299,
-      location: "ship",
-      kind: "civil",
-      angle: -5,
-    }
-  ]);
+  const [data, setData] = useState(null);
 
   const selectDay = day => {
     const translatedDay = day.format('YYYY-MM-DD')
-    const filteredDay = fallback.find(item => item.date === translatedDay) || fallback[0]
+    const filteredDay = (data||fallback).find(item => item.date === translatedDay) || fallback[0]
     setDay(filteredDay)
   }
 
   useEffect(() => {
-    fetch('https://94f37516.ngrok.io/cargos')
+    fetch('https://94f37516.ngrok.io/data/')
       .then(res => {
         if (res.ok) {
           return res.json();
         }
         throw new Error('Invalid Response');
       })
-      .then(res => {
-        // setMarkers(res.map(r => ({
-        //   lat: r.latitude,
-        //   lng: r.longitude,
-        //   location: r.location,
-        //   type: r.type,
-        // })));
-      })
+      .then(res => setData(res))
       .catch(err => {
         console.log(err);
       })
