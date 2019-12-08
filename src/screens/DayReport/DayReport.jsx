@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import{ Icon } from 'antd';
 import moment from 'moment';
 
@@ -7,8 +7,26 @@ import { ReportContainer, ReportTitle, ReportTitleDescription, ReportContent, Cl
 import fallback from '../../fallback';
 
 const DayReport = ({ match }) => {
-  const day = fallback.find(item => item.date === match.params.date);
+  const [data, setData] = useState(null);
 
+  useEffect(() => {
+    fetch('https://94f37516.ngrok.io/data/')
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error('Invalid Response');
+      })
+      .then(res => setData(res))
+      .catch(err => {
+        console.log(err);
+      })
+  }, []);
+  
+  const day = (data || fallback).find(item => item.date === match.params.date) || fallback[0];
+
+  console.log(day);
+  
   return (
     <ReportContainer>
       <CloseReport to="/map"><Icon type="close" /></CloseReport>
