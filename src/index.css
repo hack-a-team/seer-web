@@ -25,3 +25,29 @@ body {
 .ant-fullcalendar-value:hover {
   color: #0d1626;
 }
+
+.ant-select-selection {
+  background: transparent !important;
+  color: white;
+  border: none;
+}
+
+.ant-fullcalendar-disabled-cell .ant-fullcalendar-value {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.ant-fullcalendar {
+  border: none;
+}
+
+.ant-fullcalendar-header {
+  display: flex;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+  background: none;
+}
+
+.ant-fullcalendar-calendar-body {
+  padding-left: 0;
+}
