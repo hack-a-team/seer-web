@@ -357,6 +357,7 @@ const MapView = () => {
     }
   );
   const [data, setData] = useState(null);
+  const [alert, setAlerts] = useState(null);
 
   const selectDay = day => {
     const translatedDay = day.format("YYYY-MM-DD");
@@ -380,6 +381,20 @@ const MapView = () => {
       });
   }, []);
 
+  useEffect(() => {
+    fetch("https://94f37516.ngrok.io/alerts/")
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error("Invalid Response");
+      })
+      .then(res => setAlerts(res))
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <>
       <MapHoc {...defaultProps}>
@@ -394,16 +409,18 @@ const MapView = () => {
           ))}
         <div className="alert">
           <div className="number-alert"></div>
-          <Marker
-            icon={alertHigh}
-            label={{
-              color: "#fff",
-              fontSize: "25px",
-              fontWeight: "600",
-              text: '20',
-            }}
-            position={{ lat: -23.959637, lng: -46.294395 }}
-          />
+          {alert && (
+            <Marker
+              icon={alertHigh}
+              label={{
+                color: "#fff",
+                fontSize: "25px",
+                fontWeight: "600",
+                text: JSON.stringify(alert.length) || ''
+              }}
+              position={{ lat: -23.959637, lng: -46.294395 }}
+            />
+          )}
         </div>
       </MapHoc>
       <InfoBox day={day} />
