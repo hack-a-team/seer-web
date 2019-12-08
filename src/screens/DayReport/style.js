@@ -5,9 +5,9 @@ export const ReportContainer = styled.section`
   background: #0d1626;
   width: 100vw;
   height: 100vh;
-  padding: 32px;
+  padding: 84px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 8px;
 `;
 
@@ -17,14 +17,12 @@ export const ReportTitle = styled.h1`
   font-size: 72px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 0;
 `;
 
 export const ReportTitleDescription = styled.h2`
   color: #ffffff;
-  grid-column-start: 2;
-  grid-column-end: 4;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,6 +42,7 @@ export const ReportContent = styled.div`
   >h3 {
     color: #ffffff;
     font-weight: bold;
+    font-size: 28px;
   }
 `;
 
