@@ -319,7 +319,7 @@ const mapStyle = [
 
 const defaultProps = {
   googleMapURL:
-    "https://maps.googleapis.com/maps/api/js?key=AIzaSyDMhxIp5O5RwSjTwR8ExBeuPDSefSA7a6M&v=3.exp&libraries=geometry,drawing,places",
+    "https://maps.googleapis.com/maps/api/js?key=AIzaSyDnxSGGPeX3x3Tr1Q4QGJwo1MuTFuvyL3A&v=3.exp&libraries=geometry,drawing,places",
   loadingElement: <Spin />,
   containerElement: <div style={{ width: "100vw", height: "100vh" }} />,
   mapElement: <div style={{ width: "100%", height: "100%" }} />
