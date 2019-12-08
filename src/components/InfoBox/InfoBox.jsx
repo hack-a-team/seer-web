@@ -9,6 +9,7 @@ import { InfoBoxContainer, InfoBoxDate, InfoBoxTemperature, InfoBoxText, InfoBox
 const InfoBox = ({ day = {} }) => {
   console.log(day);
   const {
+    date,
     alerts,
     dangerProbability,
     incidentsToday,
@@ -22,8 +23,8 @@ const InfoBox = ({ day = {} }) => {
         ({ opened }) => (
           <InfoBoxContainer menuOpened={opened}>
             <InfoBoxDate>
-              {moment().format('D')}
-              <span>{moment().format('MMM')}</span>
+              {moment(date).format('D')}
+              <span>{moment(date).format('MMM')}</span>
             </InfoBoxDate>
             <InfoBoxTemperature>
               {weather.max || 15}ºC
@@ -44,9 +45,9 @@ const InfoBox = ({ day = {} }) => {
               Clima: <strong>Chuva</strong>
             </InfoBoxText>
             <InfoBoxTextBottom>
-        Probabilidade de incidente: <strong className="probability">{dangerProbability || 0}%</strong>
+              Probabilidade de incidente: <strong className="probability">{dangerProbability || 0}%</strong>
             </InfoBoxTextBottom>
-            <ReportLink to={`/report/${moment().format('YYYY-MM-DD')}`}>
+            <ReportLink to={`/report/${moment(date).format('YYYY-MM-DD')}`}>
               <Row type="flex" align="middle" justify="end">
                 <span>Ver relatório</span> <Icon type="right" style={{ fontSize: 10 }} />
               </Row>
