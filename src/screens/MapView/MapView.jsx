@@ -5,6 +5,9 @@ import { Spin } from 'antd';
 import SideMenu from '../../components/SideMenu/SideMenu';
 import InfoBox from '../../components/InfoBox/InfoBox';
 import DateSelector from '../../components/DateSelector/DateSelector';
+import BlueBoat from '../../components/BlueBoat/BlueBoat';
+import GreenBoat from '../../components/GreenBoat/GreenBoat';
+import RedBoat from '../../components/RedBoat/RedBoat';
 
 const mapStyle = [
   {
@@ -319,16 +322,41 @@ const MapHoc = withScriptjs(withGoogleMap(({ children }) => (
   </GoogleMap>
 )));
 
+function getMarkerIcon(markerData) {
+  if (markerData.location !== 'ground') {
+    switch (markerData.type) {
+      case 'civil':
+        return <BlueBoat />;
+      case 'wet':
+        return <GreenBoat />;
+      default:
+        return <RedBoat />;
+    }
+  }
+}
+
 const MapView = () => {
   const [markers, setMarkers] = useState([]);
 
   useEffect(() => {
-    setMarkers([
-      {
-        lat: -23.961479,
-        lng: -46.294864,
-      },
-    ]);
+    fetch('https://94f37516.ngrok.io/cargos')
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error('Invalid Response');
+      })
+      .then(res => {
+        setMarkers(res.map(r => ({
+          lat: r.latitude,
+          lng: r.longitude,
+          location: r.location,
+          type: r.type,
+        })));
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }, []);
 
   return (
@@ -336,6 +364,7 @@ const MapView = () => {
       <MapHoc {...defaultProps}>
         {markers.map(m => (
           <Marker
+            icon={getMarkerIcon(m)}
             position={{ lat: m.lat, lng: m.lng }}
           />
         ))}
